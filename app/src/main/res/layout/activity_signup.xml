@@ -1,19 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+    android:id="@+id/sign"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Signup">
+    android:orientation="vertical"
+    android:padding="20dp"
+    android:gravity="center"
+    android:background="@color/bg_light">
+    <ImageView
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:src="@drawable/logo"
+        android:layout_marginBottom="32dp"
+        tools:ignore="ContentDescription" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sign up page"
+        android:text="Créer un Compte"
         android:textSize="28sp"
         android:textStyle="bold"
         android:textColor="@color/primary_blue"
         android:layout_marginBottom="8dp"
-        tools:ignore="HardcodedText,MissingConstraints" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+        tools:ignore="HardcodedText" />
+    <EditText
+        android:id="@+id/editName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nom complet"
+        android:layout_marginBottom="16dp"
+        android:layout_marginHorizontal="20dp"
+        tools:ignore="Autofill,HardcodedText,TextFields" />
+    <EditText
+        android:id="@+id/editEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        android:layout_marginBottom="16dp"
+        android:layout_marginHorizontal="20dp"
+        tools:ignore="Autofill,HardcodedText" />
+    <EditText
+        android:id="@+id/editPass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Mot de passe"
+        android:inputType="textPassword"
+        android:layout_marginBottom="16dp"
+        android:layout_marginHorizontal="20dp"
+        tools:ignore="Autofill,HardcodedText" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="S'inscrire en tant que :"
+        android:layout_marginBottom="16dp"
+        android:textSize="16sp"
+        android:textAlignment="center"
+        android:textColor="#555555"
+        tools:ignore="HardcodedText" />
+    <Spinner
+        android:id="@+id/spinnerRole"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginHorizontal="20dp"
+        android:background="#bbb"
+        android:backgroundTint="#bbb"
+        android:entries="@array/roles_array" />
+    <Button
+        android:layout_width="match_parent"
+        android:text="S'inscrire"
+        android:onClick="handleSignup"
+        android:layout_marginTop="20dp"
+        android:layout_height="60dp"
+        android:backgroundTint="@color/accent_green"
+        android:textColor="@color/text_white"
+        android:textAllCaps="false"
+        android:layout_marginHorizontal="20dp"
+        tools:ignore="HardcodedText" />
+</LinearLayout>

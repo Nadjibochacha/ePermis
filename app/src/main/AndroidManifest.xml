@@ -12,6 +12,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EPermis">
         <activity
+            android:name=".CitizenDashboard"
+            android:exported="false" />
+        <activity
+            android:name=".AgentDashboard"
+            android:exported="false" />
+        <activity
+            android:name=".home"
+            android:exported="false"
+            android:label="@string/title_activity_home"
+            android:theme="@style/Theme.EPermis" />
+        <activity
             android:name=".Signup"
             android:exported="false" />
         <activity
