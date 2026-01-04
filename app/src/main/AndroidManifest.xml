@@ -12,6 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EPermis">
         <activity
+            android:name=".MyRequestsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".NewRequestActivity"
+            android:exported="false" />
+        <activity
             android:name=".CitizenDashboard"
             android:exported="false" />
         <activity

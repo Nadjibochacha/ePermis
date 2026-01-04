@@ -4,4 +4,10 @@
         <item>Citoyen</item>
         <item>Agent</item>
     </string-array>
+    <string-array name="project_types">
+        <item>Construction Nouvelle</item>
+        <item>Rénovation / Extension</item>
+        <item>Démolition</item>
+        <item>Clôture / Mur</item>
+    </string-array>
 </resources>

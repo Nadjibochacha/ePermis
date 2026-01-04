@@ -1,19 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+    android:id="@+id/citizen_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@color/bg_light"
+    android:gravity="center_horizontal"
     tools:context=".CitizenDashboard">
+
     <TextView
+        android:id="@+id/tv_welcome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Citizen Dashboard"
-        android:textSize="16sp"
-        android:textAlignment="center"
-        android:textColor="#555555"
-        android:layout_marginBottom="48dp"
+        android:layout_marginTop="30dp"
+        android:text="Espace Citoyen"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="@color/primary_blue"
+        android:layout_marginBottom="8dp"
         tools:ignore="HardcodedText" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/tv_subtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Que souhaitez-vous faire aujourd'hui ?"
+        android:textSize="16sp"
+        android:layout_marginBottom="32dp"
+        tools:ignore="HardcodedText" />
+
+    <Button
+        android:id="@+id/btn_new_request"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginTop="20dp"
+        android:text="Soumettre une \n Nouvelle Demande"
+        android:textSize="18sp"
+        android:backgroundTint="@color/primary_blue"
+        android:textColor="#FFFFFF"
+        tools:ignore="HardcodedText" />
+
+    <Button
+        android:id="@+id/btn_my_requests"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginTop="16dp"
+        android:text="Suivre mes Demandes \n et Historique"
+        android:textSize="18sp"
+        android:backgroundTint="@android:color/holo_orange_dark"
+        android:textColor="#FFFFFF"
+        tools:ignore="HardcodedText" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <Button
+        android:id="@+id/btn_logout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Déconnexion"
+        android:backgroundTint="#f33"
+        android:layout_marginBottom="20dp"
+        tools:ignore="HardcodedText" />
+
+</LinearLayout>

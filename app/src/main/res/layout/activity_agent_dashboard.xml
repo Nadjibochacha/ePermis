@@ -1,19 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+    android:id="@+id/agent"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AgentDashboard">
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:padding="16dp"
+    android:background="@color/bg_light">
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Agent Dashboard"
-        android:textSize="16sp"
-        android:textAlignment="center"
-        android:textColor="#555555"
-        android:layout_marginBottom="48dp"
+        android:text="Espace Agent Administratif"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:textColor="@color/primary_blue"
+        android:layout_marginBottom="16dp"
         tools:ignore="HardcodedText" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nouvelles demandes à traiter :"
+        android:textSize="16sp"
+        android:textColor="#777"
+        android:layout_marginBottom="8dp"
+        tools:ignore="HardcodedText" />
+
+    <ListView
+        android:id="@+id/listRequests"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginVertical="20dp"
+        android:divider="@android:color/darker_gray"
+        android:dividerHeight="1dp" />
+    <Button
+        android:id="@+id/btn_logout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Déconnexion"
+        android:backgroundTint="#f33"
+        android:layout_marginBottom="20dp"
+        tools:ignore="HardcodedText" />
+
+</LinearLayout>
