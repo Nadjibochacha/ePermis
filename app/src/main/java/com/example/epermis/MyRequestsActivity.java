@@ -10,32 +10,33 @@ import androidx.appcompat.app.AppCompatActivity;
 public class MyRequestsActivity extends AppCompatActivity {
     private ListView listView;
     private DatabaseHelper dbHelper;
+    private int loggedInUserId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_requests);
+        // 1. Retrieve the ID passed from the Dashboard
+        loggedInUserId = getIntent().getIntExtra("USER_ID", -1);
         listView = findViewById(R.id.listViewMyRequests);
         dbHelper = new DatabaseHelper(this);
         loadMyRequests();
     }
     private void loadMyRequests() {
         SQLiteDatabase db = dbHelper.getReadableDatabase();
-        // Query only requests for User ID 1
-        // Remember: Cursor needs "_id" for the Adapter to work!
+        // 2. Filter query using the dynamic ID
         Cursor cursor = db.rawQuery("SELECT " + DatabaseHelper.KEY_ID + " AS _id, " +
-                DatabaseHelper.KEY_REQ_TYPE + ", " +
-                DatabaseHelper.KEY_REQ_STATUS + ", " +
-                DatabaseHelper.KEY_REQ_ADDRESS +
-                " FROM " + DatabaseHelper.TABLE_REQUESTS +
-                " WHERE " + DatabaseHelper.KEY_REQ_USER_ID + " = ?", new String[]{"1"});
-
-        // Mapping Database Columns to XML IDs (using the request_item layout created earlier)
+                        DatabaseHelper.KEY_REQ_TYPE + ", " +
+                        DatabaseHelper.KEY_REQ_STATUS + ", " +
+                        DatabaseHelper.KEY_REQ_ADDRESS +
+                        " FROM " + DatabaseHelper.TABLE_REQUESTS +
+                        " WHERE " + DatabaseHelper.KEY_REQ_USER_ID + " = ?",
+                new String[]{String.valueOf(loggedInUserId)});
+        // 3. Bind to UI
         String[] from = {DatabaseHelper.KEY_REQ_TYPE, DatabaseHelper.KEY_REQ_STATUS, DatabaseHelper.KEY_REQ_ADDRESS};
         int[] to = {R.id.txtReqType, R.id.txtReqStatus, R.id.txtReqAddress};
-
         SimpleCursorAdapter adapter = new SimpleCursorAdapter(
                 this,
-                R.layout.request_item, // We reuse the item layout from the Agent Dashboard
+                R.layout.request_item,
                 cursor,
                 from,
                 to,

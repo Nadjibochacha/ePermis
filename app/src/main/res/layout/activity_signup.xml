@@ -71,7 +71,7 @@
         android:layout_marginBottom="16dp"
         android:layout_marginHorizontal="20dp"
         android:background="#ccc"
-        android:textColor="#777"
+        android:textColor="@color/black"
         android:entries="@array/roles_array" />
     <Button
         android:layout_width="match_parent"

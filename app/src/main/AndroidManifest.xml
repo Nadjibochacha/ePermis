@@ -2,37 +2,23 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission
+        android:name="android.permission.READ_EXTERNAL_STORAGE"
+        tools:ignore="ScopedStorage" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@drawable/logo"
         android:label="@string/app_name"
+        android:requestLegacyExternalStorage="true"
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.EPermis">
         <activity
-            android:name=".MyRequestsActivity"
-            android:exported="false" />
-        <activity
-            android:name=".NewRequestActivity"
-            android:exported="false" />
-        <activity
-            android:name=".CitizenDashboard"
-            android:exported="false" />
-        <activity
-            android:name=".AgentDashboard"
-            android:exported="false" />
-        <activity
-            android:name=".home"
-            android:exported="false"
-            android:label="@string/title_activity_home"
-            android:theme="@style/Theme.EPermis" />
-        <activity
-            android:name=".Signup"
-            android:exported="false" />
-        <activity
-            android:name=".Login"
+            android:name=".AdminDashboard"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
@@ -43,6 +29,37 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".Login"
+            android:exported="false" />
+        <activity
+            android:name=".Signup"
+            android:exported="false" />
+        <activity
+            android:name=".CitizenDashboard"
+            android:exported="false" />
+        <activity
+            android:name=".NewRequestActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MyRequestsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AgentDashboard"
+            android:exported="false" />
+        <activity
+            android:name=".RequestDetailActivity"
+            android:exported="false" />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
     </application>
 
 </manifest>

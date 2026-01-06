@@ -4,8 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:id="@+id/new_request"
     android:padding="20dp"
+    android:gravity="center"
     android:background="@color/bg_light">
 
     <TextView
@@ -17,17 +17,69 @@
         android:textColor="@color/primary_blue"
         android:layout_marginBottom="24dp"
         tools:ignore="HardcodedText" />
-
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:text="Nom de demandeur :"
+        tools:ignore="HardcodedText" />
+    <EditText
+        android:id="@+id/dName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Le nom complet"
+        android:inputType="text"
+        android:textColor="@color/black"
+        android:textColorHint="#777"
+        android:layout_marginBottom="24dp"
+        tools:ignore="Autofill,HardcodedText" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Date d'annessance :"
+        android:textColor="@color/black"
+        tools:ignore="HardcodedText" />
+    <EditText
+        android:id="@+id/date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:inputType="date"
+        android:hint="Sélectionner une date"
+        android:textColor="@color/black"
+        android:textColorHint="#777"
+        android:layout_marginBottom="24dp"
+        tools:ignore="HardcodedText,KeyboardInaccessibleWidget" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nemuro telephone :"
+        android:textColor="@color/black"
+        tools:ignore="HardcodedText" />
+    <EditText
+        android:id="@+id/phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="07********"
+        android:inputType="text"
+        android:textColor="@color/black"
+        android:textColorHint="#777"
+        android:layout_marginBottom="24dp"
+        tools:ignore="Autofill,HardcodedText,TextFields" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Type de Projet :"
+        android:textColor="@color/black"
+        android:layout_marginBottom="15dp"
         tools:ignore="HardcodedText" />
 
     <Spinner
         android:id="@+id/spinProjectType"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:background="#ccc"
+        android:textColor="@color/black"
         android:entries="@array/project_types"
         android:layout_marginBottom="16dp" />
 
@@ -35,16 +87,43 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Adresse du Site :"
+        android:textColor="@color/black"
         tools:ignore="HardcodedText" />
-
     <EditText
         android:id="@+id/editAddress"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Ex: 15 Rue des Frères, Constantine"
         android:inputType="textPostalAddress"
+        android:textColor="@color/black"
+        android:textColorHint="#777"
         android:layout_marginBottom="24dp"
         tools:ignore="HardcodedText" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Documents de demande :"
+        android:layout_marginBottom="10dp"
+        android:textColor="@color/black"
+        tools:ignore="HardcodedText" />
+    <Button
+        android:id="@+id/btnUpload"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Choisir un fichier (PDF/Image)"
+        android:layout_marginBottom="24dp"
+        android:backgroundTint="@android:color/holo_blue_light"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/txtFileName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Aucun fichier sélectionné"
+        android:layout_marginBottom="20dp"
+        android:fontStyle="italic"
+        android:textColor="@color/black"
+        tools:ignore="HardcodedText,UnusedAttribute" />
 
     <Button
         android:id="@+id/btnSubmitRequest"

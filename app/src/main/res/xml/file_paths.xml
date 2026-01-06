@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths>
+    <!-- Allow access to external storage (Download, Documents, etc.) -->
+    <external-path name="external_files" path="." />
+    <files-path name="my_docs" path="documents/" />
+    <!-- Allow access to app's internal files -->
+    <files-path name="internal_files" path="." />
+
+    <!-- Allow access to cache if needed -->
+    <cache-path name="cache_files" path="." />
+</paths>

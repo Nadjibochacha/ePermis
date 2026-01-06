@@ -63,6 +63,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Déconnexion"
+        android:textColor="@color/text_white"
         android:backgroundTint="#f33"
         android:layout_marginBottom="20dp"
         tools:ignore="HardcodedText" />

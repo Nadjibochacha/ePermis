@@ -7,7 +7,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class CitizenDashboard extends AppCompatActivity {
-
+    private int loggedInUserId;
     private Button btnNewRequest, btnMyRequests, btnLogout;
 
     @Override
@@ -16,6 +16,7 @@ public class CitizenDashboard extends AppCompatActivity {
         setContentView(R.layout.activity_citizen_dashboard);
         initializeViews();
         setupClickListeners();
+        loggedInUserId = getIntent().getIntExtra("USER_ID", -1);
     }
 
     private void initializeViews() {
@@ -27,12 +28,16 @@ public class CitizenDashboard extends AppCompatActivity {
     private void setupClickListeners() {
         // 1. New Request
         btnNewRequest.setOnClickListener(v -> {
-            startActivity(new Intent(this, NewRequestActivity.class));
+            Intent intent = new Intent(this, NewRequestActivity.class);
+            intent.putExtra("USER_ID", loggedInUserId);
+            startActivity(intent);
         });
         // 2. My Requests (History)
         btnMyRequests.setOnClickListener(v -> {
             Toast.makeText(this, "Chargement de vos demandes...", Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(this, MyRequestsActivity.class));
+            Intent intent = new Intent(this, MyRequestsActivity.class);
+            intent.putExtra("USER_ID", loggedInUserId);
+            startActivity(intent);
         });
         // 3. Logout
         btnLogout.setOnClickListener(v -> {

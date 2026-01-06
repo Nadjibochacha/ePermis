@@ -3,11 +3,17 @@
     <string-array name="roles_array">
         <item>Citoyen</item>
         <item>Agent</item>
+        <item>Admin</item>
     </string-array>
     <string-array name="project_types">
         <item>Construction Nouvelle</item>
         <item>Rénovation / Extension</item>
         <item>Démolition</item>
         <item>Clôture / Mur</item>
+    </string-array>
+    <string-array name="statuses">
+        <item>En cours de traitement</item>
+        <item>Acceptée</item>
+        <item>Refusée</item>
     </string-array>
 </resources>

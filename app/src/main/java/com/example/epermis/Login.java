@@ -40,14 +40,20 @@ public class Login extends AppCompatActivity {
                 " WHERE " + DatabaseHelper.KEY_USER_EMAIL + "=? AND " +
                 DatabaseHelper.KEY_USER_PASSWORD + "=?", new String[]{email, pass});
         if (cursor.moveToFirst()) {
+            int idIndex = cursor.getColumnIndex(DatabaseHelper.KEY_ID);
             int roleIndex = cursor.getColumnIndex(DatabaseHelper.KEY_USER_ROLE);
-            String role = (roleIndex != -1) ? cursor.getString(roleIndex) : "Citoyen";
+            int userId = cursor.getInt(idIndex);
+            String role = cursor.getString(roleIndex);
             Intent intent;
-            if (role.equalsIgnoreCase("Agent")) {
+            if (role.equals("Admin")) {
+                intent = new Intent(this, AdminDashboard.class);
+            } else if (role.equals("Agent")) {
                 intent = new Intent(this, AgentDashboard.class);
             } else {
                 intent = new Intent(this, CitizenDashboard.class);
             }
+            startActivity(intent);
+            intent.putExtra("USER_ID", userId);
             startActivity(intent);
             finish();
         } else {
