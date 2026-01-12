@@ -3,88 +3,138 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg_light"
-    android:padding="16dp">
+    android:background="@color/bg_light">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="20dp">
         <TextView
-            android:id="@+id/detTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Détails de la Demande"
             android:textSize="22sp"
             android:textStyle="bold"
             android:textColor="@color/primary_blue"
-            android:layout_marginBottom="20dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="24dp"
             tools:ignore="HardcodedText" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Demandeur:"
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            tools:ignore="HardcodedText" />
-        <TextView
-            android:id="@+id/detName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="18sp"
-            android:textColor="#333"
-            android:layout_marginBottom="10dp" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Type de Projet:"
-            android:textStyle="bold"
-            android:textColor="@color/black"
-            tools:ignore="HardcodedText" />
-        <TextView
-            android:id="@+id/detType"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="18sp"
-            android:textColor="#333"
-            android:layout_marginBottom="10dp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Adresse:"
-            android:textColor="@color/black"
+            android:text="Nom de demandeur :"
             android:textStyle="bold"
-            tools:ignore="HardcodedText" />
+            android:textColor="@color/black" />
+        <TextView
+            android:id="@+id/detName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="Chargement..."
+            android:textColor="@color/black"
+            android:layout_marginBottom="16dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Date de naissance :"
+            android:textStyle="bold"
+            android:textColor="@color/black" />
+        <TextView
+            android:id="@+id/detBirthDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="--"
+            android:textColor="@color/black"
+            android:layout_marginBottom="16dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Numéro téléphone :"
+            android:textStyle="bold"
+            android:textColor="@color/black" />
+        <TextView
+            android:id="@+id/detPhone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="--"
+            android:textColor="@color/black"
+            android:layout_marginBottom="16dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Type de Projet :"
+            android:textStyle="bold"
+            android:textColor="@color/black" />
+        <TextView
+            android:id="@+id/detType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:textColor="@color/black"
+            android:layout_marginBottom="16dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Adresse du Site :"
+            android:textStyle="bold"
+            android:textColor="@color/black" />
         <TextView
             android:id="@+id/detAddress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
-            android:textColor="#333"
-            android:layout_marginBottom="20dp" />
+            android:padding="10dp"
+            android:textColor="@color/black"
+            android:layout_marginBottom="16dp" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#ccc"
+            android:layout_marginBottom="16dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Document joint :"
+            android:textStyle="bold"
+            android:textColor="@color/black" />
+        <TextView
+            android:id="@+id/txtDetFileName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Fichier: aucun"
+            android:padding="5dp"
+            android:textColor="#555"
+            android:layout_marginBottom="8dp" />
         <Button
             android:id="@+id/btnViewDoc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Voir le Document (PDF/Image)"
-            android:backgroundTint="@android:color/holo_blue_dark"
-            android:layout_marginBottom="30dp"
-            tools:ignore="HardcodedText" />
+            android:text="Voir le Document"
+            android:backgroundTint="@android:color/holo_blue_light"
+            android:layout_marginBottom="24dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Statut actuel :"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_marginBottom="8dp"/>
         <Spinner
             android:id="@+id/spinStatus"
             android:layout_width="match_parent"
-            android:textColor="@color/black"
             android:layout_height="50dp"
-            android:background="#ccc"
+            android:background="#eee"
             android:layout_marginBottom="20dp" />
         <Button
             android:id="@+id/btnUpdateStatus"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:text="Enregistrer les modifications"
+            android:text="Mettre à jour le statut"
             android:backgroundTint="@color/primary_blue"
-            android:textColor="#FFFFFF"
-            tools:ignore="HardcodedText" />
+            android:textColor="#FFFFFF" />
     </LinearLayout>
 </ScrollView>

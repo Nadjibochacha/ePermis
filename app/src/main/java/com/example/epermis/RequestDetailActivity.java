@@ -20,7 +20,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class RequestDetailActivity extends AppCompatActivity {
-    private TextView detName, detType, detAddress;
+    private TextView detName, detType, detAddress, detBirthDate, detPhone, txtDetFileName;
     private Spinner spinStatus;
     private DatabaseHelper dbHelper;
     private int requestId;
@@ -44,6 +44,9 @@ public class RequestDetailActivity extends AppCompatActivity {
         detName = findViewById(R.id.detName);
         detType = findViewById(R.id.detType);
         detAddress = findViewById(R.id.detAddress);
+        detBirthDate = findViewById(R.id.detBirthDate);
+        detPhone = findViewById(R.id.detPhone);
+        txtDetFileName = findViewById(R.id.txtDetFileName);
         spinStatus = findViewById(R.id.spinStatus);
     }
 
@@ -59,10 +62,18 @@ public class RequestDetailActivity extends AppCompatActivity {
         if (c.moveToFirst()) {
             projectType = c.getString(c.getColumnIndexOrThrow(DatabaseHelper.KEY_REQ_TYPE));
             currentStatus = c.getString(c.getColumnIndexOrThrow(DatabaseHelper.KEY_REQ_STATUS));
-            filePath = c.getString(c.getColumnIndexOrThrow("file_path")); // Get the path we saved
-            detName.setText(c.getString(c.getColumnIndexOrThrow("applicant_name")));
+            detName.setText(c.getString(c.getColumnIndexOrThrow(DatabaseHelper.KEY_REQ_NAME)));
             detType.setText(projectType);
             detAddress.setText(c.getString(c.getColumnIndexOrThrow(DatabaseHelper.KEY_REQ_ADDRESS)));
+            String dob = c.getString(c.getColumnIndexOrThrow(DatabaseHelper.KEY_REQ_DATE));
+            String ph = c.getString(c.getColumnIndexOrThrow(DatabaseHelper.KEY_REQ_PHONE));
+            filePath = c.getString(c.getColumnIndexOrThrow(DatabaseHelper.KEY_REQ_FILE));
+            detBirthDate.setText(dob);
+            detPhone.setText(ph);
+            if (filePath != null) {
+                File file = new File(filePath);
+                txtDetFileName.setText("Fichier: " + file.getName());
+            }
             int statusPosition = statusList.indexOf(currentStatus);
             if (statusPosition != -1) {
                 spinStatus.setSelection(statusPosition);
