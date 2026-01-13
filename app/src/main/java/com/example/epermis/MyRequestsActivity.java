@@ -5,6 +5,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
+
+import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MyRequestsActivity extends AppCompatActivity {
@@ -14,8 +16,8 @@ public class MyRequestsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_my_requests);
-        // 1. Retrieve the ID passed from the Dashboard
         loggedInUserId = getIntent().getIntExtra("USER_ID", -1);
         listView = findViewById(R.id.listViewMyRequests);
         dbHelper = new DatabaseHelper(this);
@@ -23,7 +25,6 @@ public class MyRequestsActivity extends AppCompatActivity {
     }
     private void loadMyRequests() {
         SQLiteDatabase db = dbHelper.getReadableDatabase();
-        // 2. Filter query using the dynamic ID
         Cursor cursor = db.rawQuery("SELECT " + DatabaseHelper.KEY_ID + " AS _id, " +
                         DatabaseHelper.KEY_REQ_TYPE + ", " +
                         DatabaseHelper.KEY_REQ_STATUS + ", " +

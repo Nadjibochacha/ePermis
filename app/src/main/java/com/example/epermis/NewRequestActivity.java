@@ -7,6 +7,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
 import android.widget.*;
+
+import androidx.activity.EdgeToEdge;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,7 +25,6 @@ public class NewRequestActivity extends AppCompatActivity {
     private TextView txtFileName;
     private Uri selectedFileUri;
     private DatabaseHelper dbHelper;
-
     // 1. Logic to handle the file picker result
     @SuppressLint("SetTextI18n")
     private final ActivityResultLauncher<Intent> filePickerLauncher = registerForActivityResult(
@@ -39,10 +40,9 @@ public class NewRequestActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_new_request);
-
         dbHelper = new DatabaseHelper(this);
-
         // Initialize all fields
         dName = findViewById(R.id.dName);
         date = findViewById(R.id.date);
@@ -50,18 +50,15 @@ public class NewRequestActivity extends AppCompatActivity {
         editAddress = findViewById(R.id.editAddress);
         spinType = findViewById(R.id.spinProjectType);
         txtFileName = findViewById(R.id.txtFileName);
-
         // Upload Button Logic
         findViewById(R.id.btnUpload).setOnClickListener(v -> {
             Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
             intent.setType("*/*");
             filePickerLauncher.launch(intent);
         });
-
         // Submit Button Logic
         findViewById(R.id.btnSubmitRequest).setOnClickListener(v -> saveToDatabase());
     }
-
     private void saveToDatabase() {
         String name = dName.getText().toString();
         String bDate = date.getText().toString();
@@ -73,9 +70,7 @@ public class NewRequestActivity extends AppCompatActivity {
             Toast.makeText(this, "Veuillez joindre un document", Toast.LENGTH_SHORT).show();
             return;
         }
-        // NEW: Copy the file first!
         String internalPath = copyFileToInternalStorage(selectedFileUri);
-
         if (internalPath != null) {
             SQLiteDatabase db = dbHelper.getWritableDatabase();
             ContentValues v = new ContentValues();
@@ -87,12 +82,8 @@ public class NewRequestActivity extends AppCompatActivity {
             v.put(DatabaseHelper.KEY_REQ_FILE, internalPath);
             v.put(DatabaseHelper.KEY_REQ_USER_ID, currentUserId);
             v.put(DatabaseHelper.KEY_REQ_STATUS, "En attente");
-
-            // Save the INTERNAL PATH, not the URI
             v.put("file_path", internalPath);
-
             v.put(DatabaseHelper.KEY_REQ_USER_ID, currentUserId);
-
             long id = db.insert(DatabaseHelper.TABLE_REQUESTS, null, v);
             if (id != -1) {
                 Toast.makeText(this, "Demande et document enregistrés !", Toast.LENGTH_LONG).show();

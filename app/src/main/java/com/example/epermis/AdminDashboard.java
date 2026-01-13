@@ -1,5 +1,6 @@
 package com.example.epermis;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.database.Cursor;
@@ -15,6 +16,7 @@ import android.widget.SimpleCursorAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class AdminDashboard extends AppCompatActivity {
@@ -22,9 +24,11 @@ public class AdminDashboard extends AppCompatActivity {
     private DatabaseHelper dbHelper;
     private boolean showingUsers = true;
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_admin_dashboard);
         dbHelper = new DatabaseHelper(this);
         adminListView = findViewById(R.id.adminListView);
@@ -96,7 +100,6 @@ public class AdminDashboard extends AppCompatActivity {
                 .setPositiveButton("Oui", (dialog, which) -> {
                     if (showingUsers) dbHelper.deleteUser(id);
                     else dbHelper.deleteRequest(id);
-
                     Toast.makeText(this, "Élément supprimé", Toast.LENGTH_SHORT).show();
                     if (showingUsers) loadUsers(); else loadRequests();
                 })
@@ -119,8 +122,6 @@ public class AdminDashboard extends AppCompatActivity {
                     String name = etName.getText().toString();
                     String email = etEmail.getText().toString();
                     String role = spRole.getSelectedItem().toString();
-
-                    // Perform update operation
                     boolean updated = dbHelper.updateUser(userId, name, email, role);
                     if (updated) {
                         Toast.makeText(this, "Utilisateur mis à jour", Toast.LENGTH_SHORT).show();

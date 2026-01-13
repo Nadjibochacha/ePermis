@@ -11,13 +11,11 @@ public class NotificationHelper {
 
     public static void showStatusNotification(Context context, String type, String newStatus) {
         NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-        // 1. Create the Channel
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             NotificationChannel channel = new NotificationChannel(
                     CHANNEL_ID, "ePermis Updates", NotificationManager.IMPORTANCE_DEFAULT);
             notificationManager.createNotificationChannel(channel);
         }
-
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, CHANNEL_ID)
                 .setSmallIcon(R.drawable.logo)
                 .setContentTitle("Mise à jour de votre permis")
@@ -25,7 +23,6 @@ public class NotificationHelper {
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)
                 .setAutoCancel(true);
 
-        // 3. Show it
         notificationManager.notify(1, builder.build());
     }
 }

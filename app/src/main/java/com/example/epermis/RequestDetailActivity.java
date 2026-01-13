@@ -11,6 +11,8 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
 import android.webkit.MimeTypeMap;
@@ -30,6 +32,7 @@ public class RequestDetailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_request_detail);
         dbHelper = new DatabaseHelper(this);
         requestId = getIntent().getIntExtra("REQ_ID", -1);
